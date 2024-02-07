@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" autocomplete="off">
+      <div class="user-box">
+        <input type="text" name="" required="" formControlName="name">
+        <span
+          *ngIf="loginForm.controls['name']?.invalid && (loginForm.controls['name']?.dirty || loginForm.controls['name']?.touched)"
+          class="error_text">Username required</span>
+        <label class="required">Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="" required="" formControlName="passWord" autocomplete="new-password">
+        <span
+          *ngIf="loginForm.controls['passWord']?.invalid && (loginForm.controls['passWord']?.dirty || loginForm.controls['passWord']?.touched)"
+          class="error_text">Password required</span>
+        <label class="required">Password</label>
+      </div>
+      <a href="/dashboard" (click)="onSumbit()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+  </div>
+</body>
+
+</html>

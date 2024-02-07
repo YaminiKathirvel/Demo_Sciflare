@@ -1,0 +1,16 @@
+.nav-item a {
+    color: black;
+
+    font-weight: bold;
+
+}
+
+.nav-item a:hover {
+    color: green;
+
+}
+
+.navbar-light .navbar-brand {
+    color: rgba(0, 0, 0, .9);
+    margin: 0px 0px 0px 87px;
+}

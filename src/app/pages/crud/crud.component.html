@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>User Details</title>
+</head>
+
+<body style="background: #e4e9f7;">
+
+    <div class="overlay" *ngIf="loadingFromDB">
+        <span id="nav">
+            <div class="spinner" style="display: block; position: fixed">
+            </div>
+        </span>
+        <span id="nav">
+            <div class="submit-message"
+                style="display: block; color: #FFFFFF; position: fixed; left: 49.7%; top: 54.5%;">
+                Loading...
+            </div>
+        </span>
+    </div>
+
+    <div class="container mt-5">
+        <div *ngIf="isShowUserForm">
+            <h2>User Form</h2>
+            <!-- User Form -->
+            <form id="userForm" [formGroup]="userForm" class="styled-form">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="firstName" class="required">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                            formControlName="firstName" required>
+                        <span
+                            *ngIf="userForm.controls['firstName']?.invalid && (userForm.controls['firstName']?.dirty || userForm.controls['firstName']?.touched)"
+                            class="error_text">First name required</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName" class="required">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName"
+                            required>
+                        <span
+                            *ngIf="userForm.controls['lastName']?.invalid && (userForm.controls['lastName']?.dirty || userForm.controls['lastName']?.touched)"
+                            class="error_text">Last name required</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="email" class="required">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                            required>
+                        <span
+                            *ngIf="userForm.controls['email']?.invalid && (userForm.controls['email']?.dirty || userForm.controls['email']?.touched)"
+                            class="error_text">Please enter a valid email address</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="dob" class="required">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" name="dob" formControlName="dob" required>
+                        <span
+                            *ngIf="userForm.controls['dob']?.invalid && (userForm.controls['dob']?.dirty || userForm.controls['dob']?.touched)"
+                            class="error_text">DOB required</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="contact" class="required">Contact</label>
+                        <input type="number" class="form-control" id="contact" name="contact" formControlName="contact"
+                            required>
+                        <span
+                            *ngIf="userForm.controls['contact']?.invalid && (userForm.controls['contact']?.dirty || userForm.controls['contact']?.touched)"
+                            class="error_text">Contact number required</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="gender" class="required">Gender</label>
+                        <select class="form-control" id="gender" name="gender" formControlName="gender" required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <span
+                            *ngIf="userForm.controls['gender']?.invalid && (userForm.controls['gender']?.dirty || userForm.controls['gender']?.touched)"
+                            class="error_text">Gender required</span>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="onFormSubmit()"
+                    *ngIf="showSubmit">Submit</button>
+                <button type="submit" class="btn btn-primary" (click)="update()" *ngIf="showUpdate">Update</button>
+            </form>
+
+        </div>
+        <div *ngIf="isShowUserTable">
+            <h2>User Details</h2>
+            <!-- Add User Button -->
+            <button type="button" class="btn btn-primary mb-3" id="addUserBtn" (click)="openUserForm()">Add
+                User</button>
+
+            <!-- Table to display user details -->
+            <div class="table-responsive">
+                <table class="table bordered-table styled-form">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>DOB</th>
+                            <th>Contact</th>
+                            <th>Gender</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let user of userList">
+                            <td>{{ user._id }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.dob }}</td>
+                            <td>{{ user.contact }}</td>
+                            <td>{{ user.gender }}</td>
+                            <td><button type="button" class="btn btn-primary"
+                                    (click)="editUserForm(user._id)">Edit</button></td>
+                            <td><button type="button" class="btn btn-danger" (click)="delete(user._id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (required for some Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
