@@ -11,7 +11,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    localStorage.removeItem("formValue");
+  }
 
   loginForm = new FormGroup({
     name: new FormControl('', [Validators.required]),

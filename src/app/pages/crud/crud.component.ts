@@ -69,6 +69,12 @@ export class CrudComponent implements OnInit {
     )
   }
 
+  onCancel() {
+    this.userForm.reset();
+    this.isShowUserForm = false;
+    this.isShowUserTable = true;
+  }
+
   userList: any;
   UserList() {
     this.loadingFromDB = true;
@@ -119,7 +125,7 @@ export class CrudComponent implements OnInit {
       lastName: this.foundUserId.lastName,
       email: this.foundUserId.email,
       dob: this.foundUserId.dob,
-      education: this.foundUserId.education,
+      contact: this.foundUserId.contact,
       gender: this.foundUserId.gender
     });
   }

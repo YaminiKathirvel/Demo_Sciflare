@@ -88,9 +88,14 @@
                     </div>
 
                 </div>
+
                 <button type="submit" class="btn btn-primary" (click)="onFormSubmit()"
                     *ngIf="showSubmit">Submit</button>
+                <span class="button-space"></span>
                 <button type="submit" class="btn btn-primary" (click)="update()" *ngIf="showUpdate">Update</button>
+                <span class="button-space"></span>
+                <button type="button" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+
             </form>
 
         </div>

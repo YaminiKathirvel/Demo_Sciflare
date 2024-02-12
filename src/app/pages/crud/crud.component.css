@@ -55,3 +55,7 @@
     content: " *";
     color: red;
 }
+
+.button-space {
+    margin-right: 10px;
+}
