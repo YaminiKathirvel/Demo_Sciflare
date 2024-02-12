@@ -10,30 +10,20 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('../app/pages/login/login.module').then(m => m.LoginModule)
   },
- 
   {
-    
     path: '',
     component: DefaultComponent,
-    children: [{
-      path: 'crud',
-      loadChildren: () => import('../app/pages/crud/crud.module').then(m => m.CrudModule),
-    },
-    {
-      path: 'dashboard',
-      loadChildren: () => import('../app/pages/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] 
-    }
-  ],
-  
-    
-    
-    
-    
-    
-  },
-  
- 
- 
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('../app/pages/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard]
+      },
+      {
+        path: 'crud',
+        loadChildren: () => import('../app/pages/crud/crud.module').then(m => m.CrudModule),
+      }
+    ]
+  }
 ];
 
 @NgModule({

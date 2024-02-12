@@ -11,9 +11,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-    localStorage.removeItem("formValue");
-  }
+  ngOnInit(): void { }
 
   loginForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -29,5 +27,4 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("formValue", getFormValue);
     this.router.navigate(['/dashboard']);
   }
-
 }
