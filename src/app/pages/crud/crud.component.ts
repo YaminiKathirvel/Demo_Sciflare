@@ -119,7 +119,7 @@ export class CrudComponent implements OnInit {
     this.isShowUserTable = false;
     this.showSubmit = false;
     this.showUpdate = true;
-    this.foundUserId = this.userList.find((x: any) => x._id === id);
+    this.foundUserId = this.userList.find((x: any) => x.id === id);
     this.userForm.patchValue({
       firstName: this.foundUserId.firstName,
       lastName: this.foundUserId.lastName,
@@ -132,7 +132,7 @@ export class CrudComponent implements OnInit {
 
   update() {
     this.isLoading = true;
-    this._userService.updateUser(this.foundUserId._id, this.userForm.value).subscribe(
+    this._userService.updateUser(this.foundUserId.id, this.userForm.value).subscribe(
       (result: any) => {
         this.isLoading = false;
         this.updateMsg();

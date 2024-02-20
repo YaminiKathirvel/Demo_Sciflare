@@ -110,7 +110,7 @@
 
                     <tbody>
                         <tr *ngFor="let user of userList">
-                            <td>{{ user._id }}</td>
+                            <td>{{ user.id }}</td>
                             <td>{{ user.firstName }}</td>
                             <td>{{ user.lastName }}</td>
                             <td>{{ user.email }}</td>
@@ -118,8 +118,8 @@
                             <td>{{ user.contact }}</td>
                             <td>{{ user.gender }}</td>
                             <td><button type="button" class="btn btn-primary"
-                                    (click)="editUserForm(user._id)">Edit</button></td>
-                            <td><button type="button" class="btn btn-danger" (click)="delete(user._id)">Delete</button>
+                                    (click)="editUserForm(user.id)">Edit</button></td>
+                            <td><button type="button" class="btn btn-danger" (click)="delete(user.id)">Delete</button>
                             </td>
                         </tr>
                     </tbody>

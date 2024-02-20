@@ -13,7 +13,7 @@ export class UserService {
   apiUrl: string;
   constructor(private http: HttpClient) {
     this.endPoint = "5bae4d8936c5470280ec2d74c98b8481";
-    this.apiUrl = `https://crudcrud.com/api/${this.endPoint}/unicorns`;
+    this.apiUrl = `http://localhost:3000/user`;
   }
   createUser(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, userData);

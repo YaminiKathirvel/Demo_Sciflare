@@ -15,5 +15,25 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "user": [
+    {
+      "firstName": "Yamini",
+      "lastName": "K",
+      "email": "yams@gmail.com",
+      "dob": "2024-02-20",
+      "contact": "7708103533",
+      "gender": "female",
+      "id": 1
+    },
+    {
+      "firstName": "Saisubash",
+      "lastName": "R",
+      "email": "sai@gmail.com",
+      "dob": "2024-02-20",
+      "contact": "7358487149",
+      "gender": "male",
+      "id": 2
+    }
+  ]
 }
