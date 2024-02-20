@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultModule } from './layouts/default/default.module';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms';
+import { SharedModule } from '../app/shared/shared.module';
 
 
 
@@ -21,7 +22,8 @@ import { ReactiveFormsModule , FormsModule} from '@angular/forms';
     HttpClientModule,
     DefaultModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

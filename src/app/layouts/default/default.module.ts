@@ -9,6 +9,7 @@ import { SidebarComponent } from '../../pages/sidebar/sidebar.component';
 import { navbarComponent } from '../../pages/navbar/navbar.component';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { LoaderComponent } from '../../pages/loader/loader.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -26,7 +27,8 @@ import { LoaderComponent } from '../../pages/loader/loader.component';
     CommonModule,
     DefaultRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
 
 
   ]

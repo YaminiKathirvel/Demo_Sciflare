@@ -19,7 +19,7 @@
                     <div class="form-group col-md-6">
                         <label for="firstName" class="required">First Name</label>
                         <input type="text" class="form-control" id="firstName" name="firstName"
-                            formControlName="firstName" required>
+                            formControlName="firstName" required appOnlyAlphabetic>
                         <span
                             *ngIf="userForm.controls['firstName']?.invalid && (userForm.controls['firstName']?.dirty || userForm.controls['firstName']?.touched)"
                             class="error_text">First name required</span>
@@ -27,7 +27,7 @@
                     <div class="form-group col-md-6">
                         <label for="lastName" class="required">Last Name</label>
                         <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName"
-                            required>
+                            required appOnlyAlphabetic>
                         <span
                             *ngIf="userForm.controls['lastName']?.invalid && (userForm.controls['lastName']?.dirty || userForm.controls['lastName']?.touched)"
                             class="error_text">Last name required</span>
@@ -55,8 +55,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="contact" class="required">Contact</label>
-                        <input type="number" class="form-control" id="contact" name="contact" formControlName="contact"
-                            required>
+                        <input type="text" class="form-control" id="contact" name="contact" formControlName="contact"
+                            required maxlength="10" appOnlyNumber>
                         <span
                             *ngIf="userForm.controls['contact']?.invalid && (userForm.controls['contact']?.dirty || userForm.controls['contact']?.touched)"
                             class="error_text">Contact number required</span>
