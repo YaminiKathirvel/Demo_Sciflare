@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from '../app/layouts/default/default.component';
-import { FullwidthComponent } from '../app/layouts/fullwidth/fullwidth.component';
 import { AuthGuard } from '../app/guards/auth.guard';
 
 const routes: Routes = [

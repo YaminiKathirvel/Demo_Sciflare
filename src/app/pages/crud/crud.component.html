@@ -9,20 +9,7 @@
 </head>
 
 <body style="background: #e4e9f7;">
-
-    <div class="overlay" *ngIf="loadingFromDB">
-        <span id="nav">
-            <div class="spinner" style="display: block; position: fixed">
-            </div>
-        </span>
-        <span id="nav">
-            <div class="submit-message"
-                style="display: block; color: #FFFFFF; position: fixed; left: 49.7%; top: 54.5%;">
-                Loading...
-            </div>
-        </span>
-    </div>
-
+    <app-loader [loader]="isLoading"></app-loader>
     <div class="container mt-5">
         <div *ngIf="isShowUserForm">
             <h2>User Form</h2>

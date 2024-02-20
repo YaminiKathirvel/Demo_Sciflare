@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SidebarComponent } from '../../pages/sidebar/sidebar.component';
 import { navbarComponent } from '../../pages/navbar/navbar.component';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { LoaderComponent } from '../../pages/loader/loader.component';
 
 
 
@@ -18,7 +19,8 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
     CrudComponent,
     SidebarComponent,
     navbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

@@ -4,13 +4,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DefaultModule } from './layouts/default/default.module';
-import { FullwidthModule } from './layouts/fullwidth/fullwidth.module';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
     
   ],
   imports: [
@@ -18,7 +20,8 @@ import { FullwidthModule } from './layouts/fullwidth/fullwidth.module';
     AppRoutingModule,
     HttpClientModule,
     DefaultModule,
-    FullwidthModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

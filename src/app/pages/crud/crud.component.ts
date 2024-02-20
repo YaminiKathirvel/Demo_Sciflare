@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./crud.component.css']
 })
 export class CrudComponent implements OnInit {
-  loadingFromDB: boolean = false;
+  isLoading: boolean = false;
   isShowUserForm!: boolean;
   isShowUserTable!: boolean;
   showSubmit!: boolean;
@@ -48,10 +48,10 @@ export class CrudComponent implements OnInit {
       this.userForm.markAllAsTouched();
       return;
     }
-    this.loadingFromDB = true;
+    this.isLoading = true;
     this._userService.createUser(this.userForm.value).subscribe(
       (result) => {
-        this.loadingFromDB = false;
+        this.isLoading = false;
         this.createMsg();
         this.isShowUserForm = false;
         this.isShowUserTable = true;
@@ -64,7 +64,7 @@ export class CrudComponent implements OnInit {
           error.error,
           'error'
         )
-        this.loadingFromDB = false;
+        this.isLoading = false;
       }
     )
   }
@@ -77,11 +77,11 @@ export class CrudComponent implements OnInit {
 
   userList: any;
   UserList() {
-    this.loadingFromDB = true;
+    this.isLoading = true;
     this._userService.getUser().subscribe(
       (result: any) => {
         this.userList = result;
-        this.loadingFromDB = false;
+        this.isLoading = false;
       },
       (error) => {
         Swal.fire(
@@ -89,13 +89,13 @@ export class CrudComponent implements OnInit {
           error.error,
           'error'
         )
-        this.loadingFromDB = false;
+        this.isLoading = false;
       }
     )
   }
 
   delete(id: number) {
-    this.loadingFromDB = true;
+    this.isLoading = true;
     this._userService.deleteUser(id).subscribe(
       (result: any) => {
         this.deleteMsg();
@@ -108,7 +108,7 @@ export class CrudComponent implements OnInit {
           error.error,
           'error'
         )
-        this.loadingFromDB = false;
+        this.isLoading = false;
       }
     )
   }
@@ -131,10 +131,10 @@ export class CrudComponent implements OnInit {
   }
 
   update() {
-    this.loadingFromDB = true;
+    this.isLoading = true;
     this._userService.updateUser(this.foundUserId._id, this.userForm.value).subscribe(
       (result: any) => {
-        this.loadingFromDB = false;
+        this.isLoading = false;
         this.updateMsg();
         this.isShowUserForm = false;
         this.isShowUserTable = true;
@@ -147,7 +147,7 @@ export class CrudComponent implements OnInit {
           error.error,
           'error'
         )
-        this.loadingFromDB = false;
+        this.isLoading = false;
       }
     )
   }
