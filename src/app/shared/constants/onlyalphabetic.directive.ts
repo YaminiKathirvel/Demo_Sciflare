@@ -8,7 +8,7 @@ export class OnlyAlphabeticDirective {
   constructor(private el: ElementRef) {}
 
   @HostListener('keydown', ['$event']) onKeyDown(event: KeyboardEvent) {
-    const allowedChars = /^[a-zA-Z]+$/;
+    const allowedChars = /^[a-zA-Z\s]+$/; 
 
     if (!event.key.match(allowedChars)) {
       event.preventDefault();

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../../models/user';
+import { environment } from '../../../environments/environment';
 
 
 
@@ -8,24 +10,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
-  endPoint: string;
-  apiUrl: string;
-  constructor(private http: HttpClient) {
-    this.endPoint = "5bae4d8936c5470280ec2d74c98b8481";
-    this.apiUrl = `http://localhost:3000/user`;
+  apiUrl = environment.apiBase;
+  constructor(private http: HttpClient) { }
+  
+  createUser(userData: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}`, userData);
   }
-  createUser(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, userData);
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}`);
   }
-  getUser(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-  deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-  updateUser(id: number, userData: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, userData);
+  updateUser(id: number, userData: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, userData);
   }
 }
 

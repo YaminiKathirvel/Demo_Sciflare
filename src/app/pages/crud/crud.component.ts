@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { User } from '../../models/user';
 
 
 
@@ -74,12 +75,11 @@ export class CrudComponent implements OnInit {
     this.isShowUserForm = false;
     this.isShowUserTable = true;
   }
-
-  userList: any;
+  userList!: User[];
   UserList() {
     this.isLoading = true;
-    this._userService.getUser().subscribe(
-      (result: any) => {
+    this._userService.getUsers().subscribe(
+      (result) => {
         this.userList = result;
         this.isLoading = false;
       },
@@ -97,7 +97,7 @@ export class CrudComponent implements OnInit {
   delete(id: number) {
     this.isLoading = true;
     this._userService.deleteUser(id).subscribe(
-      (result: any) => {
+      (result) => {
         this.deleteMsg();
         this.isShowUserForm = false;
         this.UserList();
@@ -113,27 +113,27 @@ export class CrudComponent implements OnInit {
     )
   }
 
-  foundUserId: any;
+  foundUser: any;
   editUserForm(id: number) {
     this.isShowUserForm = true;
     this.isShowUserTable = false;
     this.showSubmit = false;
     this.showUpdate = true;
-    this.foundUserId = this.userList.find((x: any) => x.id === id);
+    this.foundUser = this.userList.find(x => x.id === id);
     this.userForm.patchValue({
-      firstName: this.foundUserId.firstName,
-      lastName: this.foundUserId.lastName,
-      email: this.foundUserId.email,
-      dob: this.foundUserId.dob,
-      contact: this.foundUserId.contact,
-      gender: this.foundUserId.gender
+      firstName: this.foundUser.firstName,
+      lastName: this.foundUser.lastName,
+      email: this.foundUser.email,
+      dob: this.foundUser.dob,
+      contact: this.foundUser.contact,
+      gender: this.foundUser.gender
     });
   }
 
   update() {
     this.isLoading = true;
-    this._userService.updateUser(this.foundUserId.id, this.userForm.value).subscribe(
-      (result: any) => {
+    this._userService.updateUser(this.foundUser.id, this.userForm.value).subscribe(
+      (result) => {
         this.isLoading = false;
         this.updateMsg();
         this.isShowUserForm = false;

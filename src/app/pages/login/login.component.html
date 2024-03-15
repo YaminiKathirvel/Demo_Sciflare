@@ -12,7 +12,7 @@
     <h2>Login</h2>
     <form [formGroup]="loginForm" autocomplete="off">
       <div class="user-box">
-        <input type="text" name="" required="" formControlName="name" appOnlyAlphabetic>
+        <input type="text" name="" required="" formControlName="name">
         <span
           *ngIf="loginForm.controls['name']?.invalid && (loginForm.controls['name']?.dirty || loginForm.controls['name']?.touched)"
           class="error_text">Username required</span>
